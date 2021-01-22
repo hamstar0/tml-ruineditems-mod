@@ -23,5 +23,8 @@ namespace RuinedItems {
 
 		[DefaultValue( 0.25f )]
 		public float PrefixValueScale { get; set; } = 0.25f;
+
+		[DefaultValue( 0.75f )]
+		public float ReforgeRuinChance { get; set; } = 0.75f;
 	}
 }

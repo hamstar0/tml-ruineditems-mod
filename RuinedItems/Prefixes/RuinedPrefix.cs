@@ -5,6 +5,16 @@ using Terraria.ModLoader;
 
 namespace RuinedItems.Prefixes {
 	public class RuinedPrefix : ModPrefix {
+		public static bool IsItemRuinable( Item item ) {
+			return item.maxStack == 1
+				&& ( item.accessory || item.melee || item.ranged || item.magic || item.summon )
+				&& RuinedItemsConfig.Instance.PrefixRollChance > 0f;
+		}
+
+
+
+		////////////////
+
 		public override bool Autoload( ref string name ) {
 			name = "Ruined";
 			return mod.Properties.Autoload;
@@ -20,13 +30,11 @@ namespace RuinedItems.Prefixes {
 
 		////////////////
 
-		public override float RollChance( Item item ) =>
-			RuinedItemsConfig.Instance.PrefixRollChance;
+		public override float RollChance( Item item ) => RuinedItemsConfig.Instance.PrefixRollChance;
 			//RuinedItemsConfig.Instance.Get<float>( nameof(RuinedItemsConfig.PrefixRollChance) );
 
 
-		public override bool CanRoll( Item item ) => item.maxStack == 1
-			&& ( item.accessory || item.melee || item.ranged || item.magic || item.summon )
+		public override bool CanRoll( Item item ) => RuinedPrefix.IsItemRuinable( item )
 			&& RuinedItemsConfig.Instance.PrefixRollChance > 0f;
 			//&& RuinedItemsConfig.Instance.Get<float>( nameof(RuinedItemsConfig.PrefixRollChance) ) > 0f;
 	}

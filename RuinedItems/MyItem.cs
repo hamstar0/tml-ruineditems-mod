@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using RuinedItems.Prefixes;
 
@@ -45,5 +46,28 @@ namespace RuinedItems {
 			}
 			return base.ConsumeAmmo( item, player );
 		}*/
+
+
+		////////////////
+
+		public override void PostReforge( Item item ) {
+			if( !RuinedPrefix.IsItemRuinable(item) ) {
+				return;
+			}
+
+			var config = RuinedItemsConfig.Instance;
+			if( Main.rand.NextFloat() > config.ReforgeRuinChance ) {
+				return;
+			}
+
+			item.prefix = ModContent.PrefixType<RuinedPrefix>();
+
+			/*if( Main.netMode == NetmodeID.MultiplayerClient ) {
+				int itemWho = Array.FindIndex( Main.item, i => i == item );
+				if( itemWho != -1 ) {
+					NetMessage.SendData( MessageID.SyncItem, -1, -1, null, itemWho );
+				}
+			}*/
+		}
 	}
 }
