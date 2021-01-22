@@ -56,7 +56,7 @@ namespace RuinedItems {
 			}
 
 			var config = RuinedItemsConfig.Instance;
-			if( Main.rand.NextFloat() > config.ReforgeRuinChance ) {
+			if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinChance) ) ) {
 				return;
 			}
 

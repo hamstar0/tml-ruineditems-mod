@@ -2,8 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using HamstarHelpers.Helpers.Players;
 using RuinedItems.Prefixes;
-using RuinedItems.Libraries;
 
 
 namespace RuinedItems {
