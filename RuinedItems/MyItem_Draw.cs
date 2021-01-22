@@ -12,7 +12,8 @@ namespace RuinedItems {
 		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
 			if( item.prefix != ModContent.PrefixType<RuinedPrefix>() ) { return; }
 
-			var tip = new TooltipLine( this.mod, "blah1", "blah2" );
+			var tip = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be reforged for use" );
+			tip.overrideColor = Color.DarkGray;
 			tooltips.Add( tip );
 		}
 

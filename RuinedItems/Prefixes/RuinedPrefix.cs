@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace RuinedItems.Prefixes {
 	public class RuinedPrefix : ModPrefix {
 		public static bool IsItemRuinable( Item item ) {
-			return item.maxStack == 1
+			return item?.active == true && item.maxStack == 1
 				&& ( item.accessory || item.melee || item.ranged || item.magic || item.summon )
 				&& RuinedItemsConfig.Instance.PrefixRollChance > 0f;
 		}
