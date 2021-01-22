@@ -1,5 +1,5 @@
 displayName = Ruined Items
 author = hamstar
-version = 0.3.0
+version = 0.3.0.1
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
-homepage = https://forums.terraria.org/index.php?threads/terrain-remixer-reshape-your-world-smoothly.88476/
+homepage = https://github.com/hamstar0/tml-ruineditems-mod

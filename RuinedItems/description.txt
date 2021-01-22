@@ -1,1 +1,1 @@
-Ruined Items is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Ruined Items makes all chest and loot weapons and accessories have a 'ruined' prefix that blocks its use. Use reforges to remove this prefix.
