@@ -28,9 +28,6 @@ namespace RuinedItems.Prefixes {
 
 		public override bool Autoload( ref string name ) {
 			name = "Ruined";
-
-			this.LoadIL();
-
 			return base.Autoload( ref name );
 		}
 
