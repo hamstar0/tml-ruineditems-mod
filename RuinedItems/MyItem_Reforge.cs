@@ -6,14 +6,14 @@ using RuinedItems.Prefixes;
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
-		private bool IsCurrentPreReforgeItemRuined = false;
+		private static bool IsCurrentPreReforgeItemRuined = false;
 
 
 
 		////////////////
 
 		public override bool NewPreReforge( Item item ) {
-			this.IsCurrentPreReforgeItemRuined = item.prefix == ModContent.PrefixType<RuinedPrefix>();
+			RuinedItemsItem.IsCurrentPreReforgeItemRuined = item.prefix == ModContent.PrefixType<RuinedPrefix>();
 
 			return base.NewPreReforge( item );
 		}
@@ -28,7 +28,7 @@ namespace RuinedItems {
 		private void RuinReforgeIf( Item item ) {
 			var config = RuinedItemsConfig.Instance;
 
-			if( this.IsCurrentPreReforgeItemRuined ) {
+			if( RuinedItemsItem.IsCurrentPreReforgeItemRuined ) {
 				if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeComboRuinChance) ) ) {
 					return;
 				}
