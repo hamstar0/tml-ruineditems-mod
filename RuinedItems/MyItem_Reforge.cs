@@ -6,13 +6,33 @@ using RuinedItems.Prefixes;
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
-		public override void PostReforge( Item item ) {
-			if( !RuinedPrefix.IsItemRuinable(item, false) ) {
-				return;
-			}
+		private bool IsCurrentPreReforgeItemRuined = false;
 
+
+
+		////////////////
+
+		public override bool NewPreReforge( Item item ) {
+			this.IsCurrentPreReforgeItemRuined = item.prefix == ModContent.PrefixType<RuinedPrefix>();
+
+			return base.NewPreReforge( item );
+		}
+
+
+		public override void PostReforge( Item item ) {
+			if( RuinedPrefix.IsItemRuinable(item, false) ) {
+				this.RuinReforgeIf( item );
+			}
+		}
+
+		private void RuinReforgeIf( Item item ) {
 			var config = RuinedItemsConfig.Instance;
-			if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinChance) ) ) {
+
+			if( this.IsCurrentPreReforgeItemRuined ) {
+				if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeComboRuinChance) ) ) {
+					return;
+				}
+			} else if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinChance) ) ) {
 				return;
 			}
 

@@ -8,6 +8,26 @@ using RuinedItems.Prefixes;
 
 namespace RuinedItems {
 	partial class RuinedItemsPlayer : ModPlayer {
+		public override void PostBuyItem( NPC vendor, Item[] shopInventory, Item item ) {
+			if( !RuinedPrefix.IsItemRuinable(item, false) ) {
+				return;
+			}
+
+			var config = RuinedItemsConfig.Instance;
+			float purchaseRuinChance = config.Get<float>( nameof(config.PurchasedItemRuinChance) );
+
+			if( purchaseRuinChance <= 0f ) {
+				return;
+			}
+
+			if( Main.rand.NextFloat() < purchaseRuinChance ) {
+				item.Prefix( ModContent.PrefixType<RuinedPrefix>() );
+			}
+		}
+
+
+		////////////////
+
 		public override void PreUpdate() {
 			if( Main.netMode != NetmodeID.Server ) {
 				if( this.player.whoAmI != Main.myPlayer ) {
@@ -29,7 +49,7 @@ namespace RuinedItems {
 
 		private void BlockEquipsIf() {
 			var config = RuinedItemsConfig.Instance;
-			if( !config.Get<bool>( nameof(config.RuinedItemsLockedOnly) ) ) {
+			if( !config.Get<bool>( nameof(config.RuinedItemsLockedFromUse) ) ) {
 				return;
 			}
 

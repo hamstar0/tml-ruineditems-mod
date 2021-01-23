@@ -51,7 +51,7 @@ namespace RuinedItems {
 
 
 		////////////////
-
+		
 		private void RuinLootDropsIf( NPC npc, IList<int> itemWhos ) {
 			var config = RuinedItemsConfig.Instance;
 			float npcLootRuinChance = config.Get<float>( nameof(config.NPCLootItemRuinChance) );

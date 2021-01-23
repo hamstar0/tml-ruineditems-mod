@@ -74,5 +74,10 @@ namespace RuinedItems.Prefixes {
 			//player.magicCrit += critAdd;
 			//player.thrownCrit += critAdd;
 		}
+
+
+		private void PostApply( Item item ) {
+			item.rare = -1;
+		}
 	}
 }

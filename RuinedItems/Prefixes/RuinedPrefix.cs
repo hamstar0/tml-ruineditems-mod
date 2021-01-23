@@ -61,7 +61,7 @@ namespace RuinedItems.Prefixes {
 		////////////////
 
 		internal void UpdateRuinedAccessoriesForPlayer( Player player ) {
-			for( int i = PlayerItemHelpers.VanillaAccessorySlotFirst; PlayerItemHelpers.IsAccessorySlot( player, i ); i++ ) {
+			for( int i = PlayerItemHelpers.VanillaAccessorySlotFirst; PlayerItemHelpers.IsAccessorySlot(player, i); i++ ) {
 				Item accItem = player.armor[i];
 				if( accItem?.active != true || accItem.prefix != this.Type ) {
 					continue;

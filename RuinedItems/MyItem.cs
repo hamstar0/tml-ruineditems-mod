@@ -10,7 +10,7 @@ namespace RuinedItems {
 		public override bool CanUseItem( Item item, Player player ) {
 			var config = RuinedItemsConfig.Instance;
 
-			if( config.Get<bool>( nameof(config.RuinedItemsLockedOnly) ) ) {
+			if( config.Get<bool>( nameof(config.RuinedItemsLockedFromUse) ) ) {
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 					return false;
 				}
@@ -18,12 +18,12 @@ namespace RuinedItems {
 
 			return base.CanUseItem( item, player );
 		}
-
+		
 
 		public override bool CanRightClick( Item item ) {
 			var config = RuinedItemsConfig.Instance;
 
-			if( config.Get<bool>( nameof(config.RuinedItemsLockedOnly) ) ) {
+			if( config.Get<bool>( nameof(config.RuinedItemsLockedFromUse) ) ) {
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 					return false;
 				}
@@ -35,7 +35,7 @@ namespace RuinedItems {
 		public override bool AltFunctionUse( Item item, Player player ) {
 			var config = RuinedItemsConfig.Instance;
 
-			if( config.Get<bool>( nameof(config.RuinedItemsLockedOnly) ) ) {
+			if( config.Get<bool>( nameof(config.RuinedItemsLockedFromUse) ) ) {
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 					return false;
 				}
@@ -47,7 +47,7 @@ namespace RuinedItems {
 		public override bool ConsumeItem( Item item, Player player ) {
 			var config = RuinedItemsConfig.Instance;
 
-			if( config.Get<bool>( nameof(config.RuinedItemsLockedOnly) ) ) {
+			if( config.Get<bool>( nameof(config.RuinedItemsLockedFromUse) ) ) {
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 					return false;
 				}
