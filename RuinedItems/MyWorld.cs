@@ -26,8 +26,8 @@ namespace RuinedItems {
 						continue;
 					}
 
-					if( RuinedPrefix.IsItemRuinable(items[j]) ) {
-						items[j].prefix = ruinedPrefix;
+					if( RuinedPrefix.IsItemRuinable(items[j], false) ) {
+						items[j].Prefix( ruinedPrefix );
 					}
 				}
 			}

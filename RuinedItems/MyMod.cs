@@ -60,12 +60,12 @@ namespace RuinedItems {
 
 			foreach( int itemWho in itemWhos ) {
 				Item item = Main.item[itemWho];
-				if( item?.active != true || !RuinedPrefix.IsItemRuinable(item) ) {
+				if( item?.active != true || !RuinedPrefix.IsItemRuinable(item, false) ) {
 					continue;
 				}
 
 				if( Main.rand.NextFloat() <= npcLootRuinChance ) {
-					item.prefix = ruinedPrefix;
+					item.Prefix( ruinedPrefix );
 
 					if( Main.netMode == NetmodeID.Server ) {
 						NetMessage.SendData( MessageID.SyncItem, -1, -1, null, itemWho );
