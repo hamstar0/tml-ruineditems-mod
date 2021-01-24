@@ -1,6 +1,7 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
+using HamstarHelpers.Helpers.Debug;
 using RuinedItems.Prefixes;
 
 
@@ -17,7 +18,7 @@ namespace RuinedItems {
 				}
 
 				for( int j=0; j<items.Length; j++ ) {
-					Item item = items[i];
+					Item item = items[j];
 					if( item?.active != true ) {
 						continue;
 					}
@@ -26,8 +27,8 @@ namespace RuinedItems {
 						continue;
 					}
 
-					if( RuinedPrefix.IsItemRuinable(items[j], false) ) {
-						items[j].Prefix( ruinedPrefix );
+					if( RuinedPrefix.IsItemRuinable(item, false) ) {
+						item.Prefix( ruinedPrefix );
 					}
 				}
 			}
