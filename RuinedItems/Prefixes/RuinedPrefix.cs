@@ -46,15 +46,11 @@ namespace RuinedItems.Prefixes {
 		public override float RollChance( Item item ) {
 			var config = RuinedItemsConfig.Instance;
 			return config.Get<float>( nameof(config.PrefixRollChance) );
-			//RuinedItemsConfig.Instance.Get<float>( nameof(RuinedItemsConfig.PrefixRollChance) );
 		}
 
 
 		public override bool CanRoll( Item item ) {
-			var config = RuinedItemsConfig.Instance;
-			return RuinedPrefix.IsItemRuinable( item, true )
-				&& config.Get<float>( nameof(config.PrefixRollChance) ) > 0f;
-			//&& RuinedItemsConfig.Instance.Get<float>( nameof(RuinedItemsConfig.PrefixRollChance) ) > 0f;
+			return RuinedPrefix.IsItemRuinable( item, true );
 		}
 
 
