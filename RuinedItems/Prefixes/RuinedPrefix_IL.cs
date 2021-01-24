@@ -17,9 +17,12 @@ namespace RuinedItems.Prefixes {
 
 			On.Terraria.Recipe.Create += ( On.Terraria.Recipe.orig_Create orig, Recipe recipe ) => {
 				bool isResultRuined = this.IsRecipeIngredientRuined( recipe );
-				Main.mouseItem.Prefix( this.Type );
 
 				orig.Invoke( recipe );
+
+				if( isResultRuined ) {
+					Main.mouseItem.Prefix( this.Type );
+				}
 			};
 		}
 	}

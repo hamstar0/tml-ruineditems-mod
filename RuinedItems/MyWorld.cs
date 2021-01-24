@@ -23,7 +23,7 @@ namespace RuinedItems {
 						continue;
 					}
 
-					if( WorldGen.genRand.NextFloat() > config.Get<float>( nameof(config.WorldGenChestItemRuinChance) ) ) {
+					if( WorldGen.genRand.NextFloat() > config.Get<float>( nameof(config.WorldGenChestItemRuinPercentChance) ) ) {
 						continue;
 					}
 

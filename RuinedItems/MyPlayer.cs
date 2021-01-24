@@ -14,7 +14,7 @@ namespace RuinedItems {
 			}
 
 			var config = RuinedItemsConfig.Instance;
-			float purchaseRuinChance = config.Get<float>( nameof(config.PurchasedItemRuinChance) );
+			float purchaseRuinChance = config.Get<float>( nameof(config.PurchasedItemRuinPercentChance) );
 
 			if( purchaseRuinChance <= 0f ) {
 				return;

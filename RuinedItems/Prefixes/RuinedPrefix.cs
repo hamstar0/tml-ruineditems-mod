@@ -16,7 +16,7 @@ namespace RuinedItems.Prefixes {
 
 			if( asWildRoll ) {
 				var config = RuinedItemsConfig.Instance;
-				return config.Get<float>( nameof(config.PrefixRollChance) ) > 0f;
+				return config.Get<float>( nameof(config.GeneralRuinRollChance) ) > 0f;
 			}
 			
 			return true;
@@ -45,7 +45,7 @@ namespace RuinedItems.Prefixes {
 		
 		public override float RollChance( Item item ) {
 			var config = RuinedItemsConfig.Instance;
-			return config.Get<float>( nameof(config.PrefixRollChance) );
+			return config.Get<float>( nameof(config.GeneralRuinRollChance) );
 		}
 
 

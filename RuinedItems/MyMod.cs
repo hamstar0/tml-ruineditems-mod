@@ -40,7 +40,7 @@ namespace RuinedItems {
 		public override void PostSetupContent() {
 			var config = RuinedItemsConfig.Instance;
 			
-			if( config.Get<float>( nameof(config.NPCLootItemRuinChance) ) > 0f ) {
+			if( config.Get<float>( nameof(config.NPCLootItemRuinPercentChance) ) > 0f ) {
 				ExtendedItemHooks.AddNPCLootHook( this.RuinLootDropsIf );
 			}
 		}
@@ -54,7 +54,7 @@ namespace RuinedItems {
 		
 		private void RuinLootDropsIf( NPC npc, IList<int> itemWhos ) {
 			var config = RuinedItemsConfig.Instance;
-			float npcLootRuinChance = config.Get<float>( nameof(config.NPCLootItemRuinChance) );
+			float npcLootRuinChance = config.Get<float>( nameof(config.NPCLootItemRuinPercentChance) );
 
 			byte ruinedPrefix = ModContent.PrefixType<RuinedPrefix>();
 

@@ -29,10 +29,10 @@ namespace RuinedItems {
 			var config = RuinedItemsConfig.Instance;
 
 			if( RuinedItemsItem.IsCurrentPreReforgeItemRuined ) {
-				if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeComboRuinChance) ) ) {
+				if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeComboRuinPercentChance) ) ) {
 					return;
 				}
-			} else if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinChance) ) ) {
+			} else if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinPercentChance) ) ) {
 				return;
 			}
 
