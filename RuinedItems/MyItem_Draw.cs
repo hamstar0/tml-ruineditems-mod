@@ -13,7 +13,7 @@ namespace RuinedItems {
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				float pulse = (float)Main.mouseTextColor / 255f;
 				pulse = pulse * pulse * pulse;
-				pulse = 0.5f;
+				pulse *= 0.5f;
 
 				Color newColor = lightColor * (0.25f + pulse);
 				newColor.A = lightColor.A;
