@@ -6,6 +6,15 @@ using RuinedItems.Prefixes;
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
+		public override bool Autoload( ref string name ) {
+			this.LoadBagProcessors();
+
+			return base.Autoload( ref name );
+		}
+
+
+		////
+
 		public override bool CanUseItem( Item item, Player player ) {
 			var config = RuinedItemsConfig.Instance;
 
@@ -17,7 +26,7 @@ namespace RuinedItems {
 
 			return base.CanUseItem( item, player );
 		}
-		
+
 
 		public override bool CanRightClick( Item item ) {
 			var config = RuinedItemsConfig.Instance;
