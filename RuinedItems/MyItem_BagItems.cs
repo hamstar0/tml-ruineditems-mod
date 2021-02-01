@@ -96,12 +96,12 @@ namespace RuinedItems {
 
 			//
 
-			Scraper.IsScrappingSentData = true;
+			Scraper.IsScrapingSentData = true;
 			Scraper.AddSendDataListener( listener );
 
 			callback.Invoke( plr );
 
-			Scraper.IsScrappingSentData = false;
+			Scraper.IsScrapingSentData = false;
 			Scraper.RemoveSendDataListener( listener );
 		}
 
