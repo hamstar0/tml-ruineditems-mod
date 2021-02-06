@@ -60,7 +60,7 @@ namespace RuinedItems {
 
 			foreach( int itemWho in itemWhos ) {
 				Item item = Main.item[itemWho];
-				if( item?.active != true || !RuinedPrefix.IsItemRuinable(item, false) ) {
+				if( item?.active != true || !RuinedPrefix.IsItemRuinable(item) ) {
 					continue;
 				}
 

@@ -109,7 +109,7 @@ namespace RuinedItems {
 		////////////////
 
 		private void ProcessBagItem( Player plr, Item item ) {
-			if( RuinedPrefix.IsItemRuinable(item, false) ) {
+			if( RuinedPrefix.IsItemRuinable(item) ) {
 				var config = RuinedItemsConfig.Instance;
 				float ruinChance = config.Get<float>( nameof(config.NPCLootItemRuinPercentChance) );
 

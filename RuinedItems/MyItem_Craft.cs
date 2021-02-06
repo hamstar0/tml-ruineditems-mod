@@ -7,7 +7,7 @@ using RuinedItems.Prefixes;
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
 		public override void OnCraft( Item item, Recipe recipe ) {
-			if( !RuinedPrefix.IsItemRuinable(item, false) ) {
+			if( !RuinedPrefix.IsItemRuinable(item) ) {
 				return;
 			}
 

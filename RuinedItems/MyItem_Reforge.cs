@@ -20,7 +20,7 @@ namespace RuinedItems {
 
 
 		public override void PostReforge( Item item ) {
-			if( RuinedPrefix.IsItemRuinable(item, false) ) {
+			if( RuinedPrefix.IsItemRuinable(item) ) {
 				this.RuinReforgeIf( item );
 			}
 		}

@@ -6,7 +6,7 @@ using HamstarHelpers.Helpers.Players;
 
 namespace RuinedItems.Prefixes {
 	public partial class RuinedPrefix : ModPrefix {
-		public static bool IsItemRuinable( Item item, bool asWildRoll ) {
+		public static bool IsItemRuinable( Item item ) {
 			if( item?.active != true || item.maxStack != 1 ) {
 				return false;
 			}
@@ -14,10 +14,10 @@ namespace RuinedItems.Prefixes {
 				return false;
 			}
 
-			if( asWildRoll ) {
+			/*if( asWildRoll ) {
 				var config = RuinedItemsConfig.Instance;
 				return config.Get<float>( nameof(config.GeneralRuinRollChance) ) > 0f;
-			}
+			}*/
 			
 			return true;
 		}
@@ -50,7 +50,7 @@ namespace RuinedItems.Prefixes {
 
 
 		public override bool CanRoll( Item item ) {
-			return RuinedPrefix.IsItemRuinable( item, true );
+			return RuinedPrefix.IsItemRuinable( item );
 		}
 
 
