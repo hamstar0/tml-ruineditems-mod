@@ -5,7 +5,8 @@ using Terraria.ModLoader.Config;
 
 namespace RuinedItems {
 	public partial class RuinedItemsConfig : ModConfig {
-		public bool RuinedItemsLockedFromUse { get; set; } = false;
+		[DefaultValue( true )]
+		public bool RuinedItemsLockedFromUse { get; set; } = true;
 
 
 		[Range( 0f, 10f )]
