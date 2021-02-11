@@ -41,6 +41,11 @@ namespace RuinedItems {
 		public float PurchasedItemRuinPercentChance { get; set; } = 1f;
 
 
+		[Range( 0, 999999999 )]
+		[DefaultValue( 30000 )]
+		public int MagitechScrapPrice { get; set; } = 30000;
+
+
 		[Range( 0f, 1f )]
 		[DefaultValue( 0.33f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]

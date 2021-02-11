@@ -12,7 +12,7 @@ namespace RuinedItems {
 			var config = RuinedItemsConfig.Instance;
 			NPCDefinition npcDef = config.Get<NPCDefinition>( nameof( config.MagitechScrapSoldByWhom ) );
 
-			if( npcDef.Type == type ) {
+			if( npcDef?.Type == type ) {
 				var scrapItem = new Item();
 				scrapItem.SetDefaults( ModContent.ItemType<MagitechScrapItem>() );
 
