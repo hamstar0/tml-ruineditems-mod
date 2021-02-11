@@ -18,7 +18,7 @@ namespace RuinedItems.Items {
 
 		public override void SetStaticDefaults() {
 			this.DisplayName.SetDefault( "Magitech Scrap" );
-			this.Tooltip.SetDefault( "Assorted machine parts bearing enchanted properties"
+			this.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
 				+"\nRight click to begin item picking, right click again on an item to repair it"
 				+"\nMay only repair ruined items"
 			);
