@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Terraria.ID;
 using Terraria.ModLoader.Config;
 
 
@@ -44,5 +45,8 @@ namespace RuinedItems {
 		[DefaultValue( 0.33f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
 		public float MagitechScrapRepairChance { get; set; } = 0.33f;
+
+
+		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
 	}
 }

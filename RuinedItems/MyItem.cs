@@ -68,7 +68,7 @@ namespace RuinedItems {
 
 
 		////////////////
-
+		
 		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
 			MagitechScrapItem.HoverItem = item;
 
