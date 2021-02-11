@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using HamstarHelpers.Helpers.Players;
 using RuinedItems.Prefixes;
+using RuinedItems.Items;
 
 
 namespace RuinedItems {
@@ -30,12 +31,28 @@ namespace RuinedItems {
 
 		public override void PreUpdate() {
 			if( Main.netMode != NetmodeID.Server ) {
-				if( this.player.whoAmI != Main.myPlayer ) {
-					return;
+				if( this.player.whoAmI == Main.myPlayer ) {
+					this.UpdateLocal();
+				} else {
+					this.UpdateClient();
 				}
+			} else {
+				this.UpdateServer();
 			}
+		}
 
+		private void UpdateLocal() {
 			this.BlockEquipsIf();
+
+			MagitechScrapItem.UpdatePickerMode();
+		}
+
+		private void UpdateClient() {
+			//this.BlockEquipsIf();
+		}
+
+		private void UpdateServer() {
+			//this.BlockEquipsIf();
 		}
 
 		////

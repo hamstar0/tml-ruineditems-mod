@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using HamstarHelpers.Services.Hooks.ExtendedHooks;
 using RuinedItems.Prefixes;
+using RuinedItems.Items;
 
 
 namespace RuinedItems {
@@ -47,6 +48,13 @@ namespace RuinedItems {
 
 		public override void Unload() {
 			RuinedItemsMod.Instance = null;
+		}
+
+
+		////////////////
+
+		public override void PostDrawInterface( SpriteBatch spriteBatch ) {
+			MagitechScrapItem.DrawPickerMode();
 		}
 
 

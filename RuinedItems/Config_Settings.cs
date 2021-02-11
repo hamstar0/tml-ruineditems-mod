@@ -38,5 +38,11 @@ namespace RuinedItems {
 		[DefaultValue( 1f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
 		public float PurchasedItemRuinPercentChance { get; set; } = 1f;
+
+
+		[Range( 0f, 1f )]
+		[DefaultValue( 0.33f )]
+		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
+		public float MagitechScrapRepairChance { get; set; } = 0.33f;
 	}
 }

@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using RuinedItems.Prefixes;
 
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
-		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
-			if( item.prefix != ModContent.PrefixType<RuinedPrefix>() ) {
-				return;
-			}
+		private void ApplyRuinedTooltips( Item item, List<TooltipLine> tooltips ) {
 			if( item.accessory ) {
 				this.AddRuinedAccessoryTooltips( item, tooltips );
 			}
@@ -20,7 +16,7 @@ namespace RuinedItems {
 			tip.overrideColor = Color.Red;
 			tooltips.Add( tip );
 		}
-
+		
 		////
 
 		private void AddRuinedAccessoryTooltips( Item item, List<TooltipLine> tooltips ) {

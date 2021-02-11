@@ -1,28 +1,38 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using HamstarHelpers.Helpers.Debug;
 using RuinedItems.Prefixes;
+using RuinedItems.Items;
 
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
 		public override Color? GetAlpha( Item item, Color lightColor ) {
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
-				float pulse = (float)Main.mouseTextColor / 255f;
-				pulse = pulse * pulse * pulse;
-				pulse *= 0.5f;
+				if( !Main.item.Any( i => i == item ) ) {
+					if( MagitechScrapItem.PickerActive && MagitechScrapItem.HoverItem == item ) {
+						return Color.Lime;
+					} else {
+						float pulse = (float)Main.mouseTextColor / 255f;
+						pulse = pulse * pulse * pulse;
+						pulse *= 0.5f;
 
-				Color newColor = lightColor * (0.25f + pulse);
-				newColor.A = lightColor.A;
-				return newColor;
+						Color newColor = lightColor * ( 0.25f + pulse );
+						newColor.A = lightColor.A;
+						return newColor;
+					}
+				}
 			}
 
 			return base.GetAlpha( item, lightColor );
 		}
 
+
+		////////////////
 
 		public override void PostDrawInInventory(
 					Item item,
