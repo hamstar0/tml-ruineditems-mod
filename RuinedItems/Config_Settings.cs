@@ -20,37 +20,35 @@ namespace RuinedItems {
 		public float CraftRuinPercentChance { get; set; } = 0f;
 
 
-		[DefaultValue( 0.35f )]
-		public float ReforgeRuinPercentChance { get; set; } = 0.35f;
+		[DefaultValue( 0.1f )]
+		public float ReforgeRuinPercentChance { get; set; } = 0.1f;
 
 		[DefaultValue( 4f / 5f )]
 		public float ReforgeComboRuinPercentChance { get; set; } = 4f / 5f;
 
 
-		[DefaultValue( 1f )]
-		public float WorldGenChestItemRuinPercentChance { get; set; } = 1f;
+		[DefaultValue( 4f / 5f )]
+		public float WorldGenChestItemRuinPercentChance { get; set; } = 4f / 5f;
 
-		[DefaultValue( 1f )]
+		[DefaultValue( 4f / 5f )]
 		[ReloadRequired]
-		public float NPCLootItemRuinPercentChance { get; set; } = 1f;
+		public float NPCLootItemRuinPercentChance { get; set; } = 4f / 5f;
 
 
 		[Range( 0f, 1f )]
-		[DefaultValue( 1f )]
+		[DefaultValue( 0f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float PurchasedItemRuinPercentChance { get; set; } = 1f;
+		public float PurchasedItemRuinPercentChance { get; set; } = 0f;
 
 
 		[Range( 0, 999999999 )]
-		[DefaultValue( 30000 )]
-		public int MagitechScrapPrice { get; set; } = 30000;
-
+		[DefaultValue( 5000 )]
+		public int MagitechScrapPrice { get; set; } = 5000;
 
 		[Range( 0f, 1f )]
 		[DefaultValue( 0.33f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
 		public float MagitechScrapRepairChance { get; set; } = 0.33f;
-
 
 		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
 	}
