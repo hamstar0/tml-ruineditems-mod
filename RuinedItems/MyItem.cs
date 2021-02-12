@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -70,7 +71,9 @@ namespace RuinedItems {
 		////////////////
 		
 		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
-			MagitechScrapItem.HoverItem = item;
+			MagitechScrapItem.HoverItem = Main.LocalPlayer.inventory.FirstOrDefault(
+				i => i.IsTheSameAs( item ) && !i.IsNotTheSameAs( item )
+			);
 
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				this.ApplyRuinedTooltips( item, tooltips );

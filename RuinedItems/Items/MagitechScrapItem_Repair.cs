@@ -43,7 +43,7 @@ namespace RuinedItems.Items {
 		////////////////
 
 		private static bool ApplyRepairIf( Item item, out bool escapeMode ) {
-			if( item == null || item.IsAir ) {
+			if( item == null || !item.active || item.stack == 0 ) {
 				escapeMode = false;
 				return false;
 			}
@@ -74,7 +74,11 @@ namespace RuinedItems.Items {
 
 			var config = RuinedItemsConfig.Instance;
 			if( Main.rand.NextFloat() < config.Get<float>( nameof(config.MagitechScrapRepairChance) ) ) {
+				float rollChance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
+
+				config.SetOverride( "GeneralRuinRollChance", 0f );
 				item.Prefix( -1 );
+				config.SetOverride( "GeneralRuinRollChance", rollChance );
 
 				CombatText.NewText( Main.LocalPlayer.getRect(), Color.Lime, "Repair success!", true );
 			} else {
