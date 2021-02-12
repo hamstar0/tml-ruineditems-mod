@@ -45,7 +45,7 @@ namespace RuinedItems.Items {
 
 			if( repairPerc < 1f ) {
 				string repairPercStr = ((int)(repairPerc * 100f)).ToString();
-				tooltips.Add( new TooltipLine(this.mod, "RuinedItemsMagitechScrap1", "Has only a "+repairPercStr+"% of success") );
+				tooltips.Add( new TooltipLine(this.mod, "RuinedItemsMagitechScrap1", "Has only a "+repairPercStr+"% chance of success") );
 				tooltips.Add( new TooltipLine(this.mod, "RuinedItemsMagitechScrap2", "Only one repair attempt allowed per item") );
 			}
 		}
