@@ -76,14 +76,14 @@ namespace RuinedItems.Items {
 			if( Main.rand.NextFloat() < config.Get<float>( nameof(config.MagitechScrapRepairChance) ) ) {
 				float rollChance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
 
-				config.SetOverride( "GeneralRuinRollChance", 0f );
+				config.SetOverride( nameof(config.GeneralRuinRollChance), 0f );
 				item.Prefix( -1 );
-				config.SetOverride( "GeneralRuinRollChance", rollChance );
+				config.SetOverride( nameof(config.GeneralRuinRollChance), rollChance );
 
 				CombatText.NewText( Main.LocalPlayer.getRect(), Color.Lime, "Repair success!", true );
 			} else {
 				CombatText.NewText( Main.LocalPlayer.getRect(), Color.DimGray, "Repair failed!", true );
-				Main.NewText( "Repair failed! Item can now only be repaired via. reforging.", Color.Red );
+				Main.NewText( "Repair failed! Item can now only be repaired via. reforging.", Color.OrangeRed );
 			}
 
 			myitem.IsScrapUsedUpon = true;

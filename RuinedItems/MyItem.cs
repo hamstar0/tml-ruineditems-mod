@@ -13,6 +13,8 @@ using RuinedItems.Prefixes;
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
 		public bool IsScrapUsedUpon { get; internal set; } = false;
+		
+		public bool WasRuinedSinceLastCheck { get; internal set; } = false;
 
 
 		////////////////
@@ -77,6 +79,21 @@ namespace RuinedItems {
 
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				this.ApplyRuinedTooltips( item, tooltips );
+			}
+		}
+
+
+		////////////////
+
+		public override void UpdateInventory( Item item, Player player ) {
+			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
+				this.WasRuinedSinceLastCheck = true;
+			} else {
+				if( this.WasRuinedSinceLastCheck ) {
+					this.WasRuinedSinceLastCheck = false;
+
+					RuinedPrefix.RemoveRuinedStats( item );
+				}
 			}
 		}
 	}

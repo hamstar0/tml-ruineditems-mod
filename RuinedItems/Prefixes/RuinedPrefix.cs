@@ -63,7 +63,7 @@ namespace RuinedItems.Prefixes {
 					continue;
 				}
 
-				this.ApplyAccessoryForPlayer( player );
+				this.ConveyRuinedAccessoryStatsToPlayer( player );
 			}
 		}
 	}
