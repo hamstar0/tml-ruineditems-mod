@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using HamstarHelpers.Helpers.Debug;
-using RuinedItems.Items;
 using RuinedItems.Prefixes;
 
 
@@ -72,19 +69,6 @@ namespace RuinedItems {
 
 		////////////////
 		
-		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
-			MagitechScrapItem.HoverItem = Main.LocalPlayer.inventory.FirstOrDefault(
-				i => i.IsTheSameAs( item ) && !i.IsNotTheSameAs( item )
-			);
-
-			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
-				this.ApplyRuinedTooltips( item, tooltips );
-			}
-		}
-
-
-		////////////////
-
 		public override void UpdateInventory( Item item, Player player ) {
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				this.WasRuinedSinceLastCheck = true;

@@ -22,18 +22,19 @@ namespace RuinedItems {
 		public override void PostReforge( Item item ) {
 			if( RuinedPrefix.IsItemRuinable(item) ) {
 				this.RuinReforgeIf( item );
+				this.IsScrapUsedUpon = false;
 			}
 		}
 
-		private void RuinReforgeIf( Item item ) {
+		private bool RuinReforgeIf( Item item ) {
 			var config = RuinedItemsConfig.Instance;
 
 			if( RuinedItemsItem.IsCurrentPreReforgeItemRuined ) {
 				if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeComboRuinPercentChance) ) ) {
-					return;
+					return false;
 				}
 			} else if( Main.rand.NextFloat() > config.Get<float>( nameof(config.ReforgeRuinPercentChance) ) ) {
-				return;
+				return false;
 			}
 
 			if( item.accessory ) {
@@ -53,6 +54,7 @@ namespace RuinedItems {
 					NetMessage.SendData( MessageID.SyncItem, -1, -1, null, itemWho );
 				}
 			}*/
+			return true;
 		}
 	}
 }
