@@ -9,6 +9,7 @@ namespace RuinedItems {
 		[DefaultValue( true )]
 		public bool RuinedItemsLockedFromUse { get; set; } = true;
 
+		//
 
 		[Range( 0f, 10f )]
 		[DefaultValue( 0f )]
@@ -23,8 +24,8 @@ namespace RuinedItems {
 		[DefaultValue( 0.1f )]
 		public float ReforgeRuinPercentChance { get; set; } = 0.1f;
 
-		[DefaultValue( 4f / 5f )]
-		public float ReforgeComboRuinPercentChance { get; set; } = 4f / 5f;
+		[DefaultValue( 9f / 10f )]
+		public float ReforgeComboRuinPercentChance { get; set; } = 9f / 10f;
 
 
 		[DefaultValue( 4f / 5f )]
@@ -40,15 +41,16 @@ namespace RuinedItems {
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
 		public float PurchasedItemRuinPercentChance { get; set; } = 0f;
 
+		//
 
 		[Range( 0, 999999999 )]
 		[DefaultValue( 5000 )]
 		public int MagitechScrapPrice { get; set; } = 5000;
 
 		[Range( 0f, 1f )]
-		[DefaultValue( 0.33f )]
+		[DefaultValue( 1f / 3f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float MagitechScrapRepairChance { get; set; } = 0.33f;
+		public float MagitechScrapRepairChance { get; set; } = 1f / 3f;
 
 		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
 	}

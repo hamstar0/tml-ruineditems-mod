@@ -6,10 +6,11 @@ using Terraria.ModLoader.Config;
 namespace RuinedItems {
 	public partial class RuinedItemsConfig : ModConfig {
 		[Range( 0f, 10f )]
-		[DefaultValue( 2f )]
+		[DefaultValue( 0.25f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float PrefixValueScale { get; set; } = 2f;
+		public float PrefixValueScale { get; set; } = 0.25f;
 
+		//
 
 		[Range( 0f, 10f )]
 		[DefaultValue( 2f /3f )]
