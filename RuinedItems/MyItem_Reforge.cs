@@ -21,10 +21,14 @@ namespace RuinedItems {
 
 		public override void PostReforge( Item item ) {
 			if( RuinedPrefix.IsItemRuinable(item) ) {
+				var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
 				this.RuinReforgeIf( item );
-				this.IsScrapUsedUpon = false;
+				myitem.IsScrapUsedUpon = false;
 			}
 		}
+
+		////
 
 		private bool RuinReforgeIf( Item item ) {
 			var config = RuinedItemsConfig.Instance;

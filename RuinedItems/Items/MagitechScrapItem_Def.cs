@@ -10,8 +10,6 @@ namespace RuinedItems.Items {
 	public partial class MagitechScrapItem : ModItem {
 		public static bool PickerActive { get; internal set; } = false;
 
-		public static Item HoverItem { get; internal set; } = null;
-
 
 
 		////////////////
@@ -19,7 +17,7 @@ namespace RuinedItems.Items {
 		public override void SetStaticDefaults() {
 			this.DisplayName.SetDefault( "Magitech Scrap" );
 			this.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
-				+"\nRight click to begin item picking, right click again on an item to repair it"
+				+"\nRight-click to begin item picking, left-click on an item to repair it"
 				+"\nMay only repair ruined items"
 			);
 		}

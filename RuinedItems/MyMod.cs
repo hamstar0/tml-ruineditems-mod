@@ -9,7 +9,7 @@ using RuinedItems.Items;
 
 
 namespace RuinedItems {
-	public class RuinedItemsMod : Mod {
+	public partial class RuinedItemsMod : Mod {
 		public static string GithubUserName => "hamstar0";
 		public static string GithubProjectName => "tml-ruineditems-mod";
 
@@ -36,6 +36,8 @@ namespace RuinedItems {
 			if( Main.netMode != NetmodeID.Server ) {
 				this.DisabledItemTex = ModContent.GetTexture( "Terraria/MapDeath" );
 			}
+
+			this.LoadIL();
 		}
 
 		public override void PostSetupContent() {

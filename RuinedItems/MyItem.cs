@@ -44,26 +44,36 @@ namespace RuinedItems {
 
 		public override void Load( Item item, TagCompound tag ) {
 			if( tag.ContainsKey("is_scraped_upon") ) {
-				this.IsScrapUsedUpon = tag.GetBool( "is_scraped_upon" );
+				var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
+				myitem.IsScrapUsedUpon = tag.GetBool( "is_scraped_upon" );
 			}
 		}
 
 		public override TagCompound Save( Item item ) {
-			return new TagCompound { { "is_scraped_upon", this.IsScrapUsedUpon } };
+			var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
+			return new TagCompound {
+				{ "is_scraped_upon", myitem.IsScrapUsedUpon }
+			};
 		}
 
 		public override bool NeedsSaving( Item item ) {
-			return true;
+			return RuinedPrefix.IsItemRuinable( item );
 		}
 
 		////
 
 		public override void NetReceive( Item item, BinaryReader reader ) {
-			this.IsScrapUsedUpon = reader.ReadBoolean();
+			var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
+			myitem.IsScrapUsedUpon = reader.ReadBoolean();
 		}
 
 		public override void NetSend( Item item, BinaryWriter writer ) {
-			writer.Write( this.IsScrapUsedUpon );
+			var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
+			writer.Write( myitem.IsScrapUsedUpon );
 		}
 
 

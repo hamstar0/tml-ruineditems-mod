@@ -13,15 +13,21 @@ namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
 		public override Color? GetAlpha( Item item, Color lightColor ) {
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
-				if( !Main.item.Any( i => i == item ) ) {
-					if( MagitechScrapItem.PickerActive && MagitechScrapItem.HoverItem == item ) {
-						return Color.Lime;
-					} else {
-						float pulse = (float)Main.mouseTextColor / 255f;
-						pulse = pulse * pulse * pulse;
-						pulse *= 0.5f;
+				if( !Main.item.Any( i => i == item ) ) {    // inventory items only
+					float pulse = (float)Main.mouseTextColor / 255f;
+					float strongPulse = pulse * pulse * pulse;
 
-						Color newColor = lightColor * ( 0.25f + pulse );
+					bool isHovering = item == RuinedItemsMod.Instance.InventoryMouseHoverItem;
+
+					if( MagitechScrapItem.PickerActive && isHovering ) {
+						if( isHovering ) {
+							return Color.Lime;
+						}
+						return Color.Lime * strongPulse;
+					} else {
+						strongPulse *= 0.5f;
+
+						Color newColor = lightColor * (0.25f + strongPulse);
 						newColor.A = lightColor.A;
 						return newColor;
 					}

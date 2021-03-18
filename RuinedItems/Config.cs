@@ -18,5 +18,10 @@ namespace RuinedItems {
 		////////////////
 
 		public override ConfigScope Mode => ConfigScope.ServerSide;
+
+
+		////////////////
+
+		public bool DebugMode { get; set; } = false;
 	}
 }

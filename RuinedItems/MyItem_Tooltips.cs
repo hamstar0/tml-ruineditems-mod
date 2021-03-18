@@ -1,27 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using RuinedItems.Items;
 using RuinedItems.Prefixes;
 
 
 namespace RuinedItems {
 	partial class RuinedItemsItem : GlobalItem {
 		public override void ModifyTooltips( Item item, List<TooltipLine> tooltips ) {
-			MagitechScrapItem.HoverItem = Main.LocalPlayer.inventory.FirstOrDefault(
-				i => i.IsTheSameAs( item ) && !i.IsNotTheSameAs( item )
-			);
-
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				this.ApplyRuinedTooltips( item, tooltips );
-
-				if( this.IsScrapUsedUpon ) {
-					var tip = new TooltipLine( this.mod, "ScrapUsed", "Magitech scrap repair attempted and failed; cannot retry" );
-					tip.overrideColor = Color.Red;
-				}
 			}
 		}
 
@@ -29,14 +18,28 @@ namespace RuinedItems {
 		////////////////
 
 		private void ApplyRuinedTooltips( Item item, List<TooltipLine> tooltips ) {
+			var myitem = item.GetGlobalItem<RuinedItemsItem>();
+
 			if( item.accessory ) {
 				this.AddRuinedAccessoryTooltips( item, tooltips );
 			}
 
-			var tip = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be reforged" );
-			tip.overrideColor = Color.Red;
+			TooltipLine tip1;
+			if( !myitem.IsScrapUsedUpon ) {
+				tip1 = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be repaired or reforged" );
+			} else {
+				tip1 = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be reforged" );
+			}
+			tip1.overrideColor = Color.Red;
 
-			tooltips.Add( tip );
+			tooltips.Add( tip1 );
+
+			if( myitem.IsScrapUsedUpon ) {
+				var tip2 = new TooltipLine( this.mod, "ScrapUsed", "Magitech scrap repair failed; cannot retry" );
+				tip2.overrideColor = Color.Red;
+
+				tooltips.Add( tip2 );
+			}
 		}
 		
 		////
