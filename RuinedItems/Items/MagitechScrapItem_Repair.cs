@@ -33,8 +33,11 @@ namespace RuinedItems.Items {
 				return false;
 			}
 
+			var config = RuinedItemsConfig.Instance;
 			var myitem = item.GetGlobalItem<RuinedItemsItem>();
-			if( myitem.IsScrapUsedUpon ) {
+			bool onlyOnce = config.Get<bool>( nameof(config.MagitechScrapAttemptsRepairOnlyOncePerItem) );
+
+			if( onlyOnce && myitem.IsScrapUsedUpon ) {
 				Main.NewText( "Cannot repair this with scrap more than once. Use reforging instead.", Color.Yellow );
 				return false;
 			}
@@ -44,7 +47,6 @@ namespace RuinedItems.Items {
 				return false;
 			}
 
-			var config = RuinedItemsConfig.Instance;
 			if( Main.rand.NextFloat() < config.Get<float>( nameof(config.MagitechScrapRepairChance) ) ) {
 				float rollChance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
 

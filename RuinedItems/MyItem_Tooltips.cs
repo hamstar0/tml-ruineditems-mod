@@ -18,14 +18,17 @@ namespace RuinedItems {
 		////////////////
 
 		private void ApplyRuinedTooltips( Item item, List<TooltipLine> tooltips ) {
+			var config = RuinedItemsConfig.Instance;
 			var myitem = item.GetGlobalItem<RuinedItemsItem>();
 
 			if( item.accessory ) {
 				this.AddRuinedAccessoryTooltips( item, tooltips );
 			}
 
+			bool scrapOnce = config.Get<bool>( nameof(config.MagitechScrapAttemptsRepairOnlyOncePerItem) );
+
 			TooltipLine tip1;
-			if( !myitem.IsScrapUsedUpon ) {
+			if( !scrapOnce || !myitem.IsScrapUsedUpon ) {
 				tip1 = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be repaired or reforged" );
 			} else {
 				tip1 = new TooltipLine( this.mod, "RuinedPrefixDesc", "Item is ruined and will need to be reforged" );
@@ -34,7 +37,7 @@ namespace RuinedItems {
 
 			tooltips.Add( tip1 );
 
-			if( myitem.IsScrapUsedUpon ) {
+			if( scrapOnce && myitem.IsScrapUsedUpon ) {
 				var tip2 = new TooltipLine( this.mod, "ScrapUsed", "Magitech scrap repair failed; cannot retry" );
 				tip2.overrideColor = Color.Red;
 

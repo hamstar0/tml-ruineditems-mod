@@ -55,6 +55,8 @@ namespace RuinedItems {
 
 		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
 
+		public bool MagitechScrapAttemptsRepairOnlyOncePerItem { get; set; } = false;
+
 		//
 
 		public HashSet<string> CannotRuinItems { get; set; } = new HashSet<string> {
