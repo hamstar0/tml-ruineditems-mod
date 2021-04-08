@@ -24,8 +24,8 @@ namespace RuinedItems {
 		[DefaultValue( 0.1f )]
 		public float ReforgeRuinPercentChance { get; set; } = 0.1f;
 
-		[DefaultValue( 9f / 10f )]
-		public float ReforgeComboRuinPercentChance { get; set; } = 9f / 10f;
+		[DefaultValue( 4f / 5f )]
+		public float ReforgeComboRuinPercentChance { get; set; } = 4f / 5f;
 
 
 		[DefaultValue( 4f / 5f )]

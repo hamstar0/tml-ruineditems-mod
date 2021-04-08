@@ -1,6 +1,6 @@
 displayName = Ruined Items
 author = hamstar
-version = 2.7.0
+version = 2.8.0
 modReferences = HamstarHelpers@5.11.0
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
-homepage = https://github.com/hamstar0/tml-ruineditems-mod
+homepage = https://forums.terraria.org/index.php?threads/ruined-items.102433/
