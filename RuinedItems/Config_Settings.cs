@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Terraria.ID;
 using Terraria.ModLoader.Config;
@@ -53,5 +54,12 @@ namespace RuinedItems {
 		public float MagitechScrapRepairChance { get; set; } = 1f / 3f;
 
 		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
+
+		//
+
+		public HashSet<string> CannotRuinItems { get; set; } = new HashSet<string> {
+			ItemID.GetUniqueKey( ItemID.ClothierVoodooDoll ),
+			ItemID.GetUniqueKey( ItemID.GuideVoodooDoll )
+		};
 	}
 }

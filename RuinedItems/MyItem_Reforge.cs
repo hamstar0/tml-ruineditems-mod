@@ -59,7 +59,7 @@ namespace RuinedItems {
 
 
 		private bool RuinReforge( Item item ) {
-			item.Prefix( 0 );
+			item.SetDefaults( item.type );
 
 			if( item.accessory ) {
 				var resetItem = new Item();

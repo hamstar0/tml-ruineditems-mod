@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using HamstarHelpers.Helpers.Players;
 
@@ -11,6 +13,14 @@ namespace RuinedItems.Prefixes {
 				return false;
 			}
 			if( !item.accessory && !item.melee && !item.ranged && !item.magic && !item.summon ) {
+				return false;
+			}
+
+			var config = RuinedItemsConfig.Instance;
+			string uid = ItemID.GetUniqueKey( item.type );
+			var blacklistedItemUids = config.Get<HashSet<string>>( nameof(config.CannotRuinItems) );
+
+			if( blacklistedItemUids.Contains(uid) ) {
 				return false;
 			}
 

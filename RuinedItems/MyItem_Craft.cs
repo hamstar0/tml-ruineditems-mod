@@ -12,12 +12,11 @@ namespace RuinedItems {
 			}
 
 			var config = RuinedItemsConfig.Instance;
+			float craftRuinChance = config.Get<float>( nameof(config.CraftRuinPercentChance) );
 
-			if( Main.rand.NextFloat() > config.Get<float>(nameof(config.CraftRuinPercentChance)) ) {
-				return;
+			if( Main.rand.NextFloat() <= craftRuinChance ) {
+				item.Prefix( ModContent.PrefixType<RuinedPrefix>() );
 			}
-
-			item.Prefix( ModContent.PrefixType<RuinedPrefix>() );
 		}
 	}
 }
