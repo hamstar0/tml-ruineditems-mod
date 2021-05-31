@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
-using HamstarHelpers.Helpers.Players;
+using ModLibsGeneral.Libraries.Players;
 using RuinedItems.Prefixes;
 
 
@@ -18,7 +18,7 @@ namespace RuinedItems {
 				if( item == null || item.IsAir ) { continue; }
 
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
-					PlayerItemHelpers.DropEquippedArmorItem( player, i );
+					PlayerItemLibraries.DropEquippedArmorItem( player, i );
 				}
 			}
 
@@ -27,7 +27,7 @@ namespace RuinedItems {
 				if( item == null || item.IsAir ) { continue; }
 
 				if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
-					PlayerItemHelpers.DropEquippedMiscItem( player, i );
+					PlayerItemLibraries.DropEquippedMiscItem( player, i );
 				}
 			}
 		}

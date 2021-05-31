@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using HamstarHelpers.Services.Hooks.ExtendedHooks;
+using ModLibsGeneral.Services.Hooks.ExtendedHooks;
 using RuinedItems.Prefixes;
 using RuinedItems.Items;
 

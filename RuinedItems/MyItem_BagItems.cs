@@ -3,8 +3,8 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using HamstarHelpers.Helpers.Debug;
-using HamstarHelpers.Services.Network.Scraper;
+using ModLibsCore.Libraries.Debug;
+using ModLibsNet.Services.Network.Scraper;
 using RuinedItems.Prefixes;
 
 

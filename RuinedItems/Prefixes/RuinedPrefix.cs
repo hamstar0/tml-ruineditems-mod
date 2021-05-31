@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using HamstarHelpers.Helpers.Players;
+using ModLibsGeneral.Libraries.Players;
 
 
 namespace RuinedItems.Prefixes {
@@ -67,7 +67,7 @@ namespace RuinedItems.Prefixes {
 		////////////////
 
 		internal void UpdateRuinedAccessoriesForPlayer( Player player ) {
-			for( int i = PlayerItemHelpers.VanillaAccessorySlotFirst; PlayerItemHelpers.IsAccessorySlot(player, i); i++ ) {
+			for( int i = PlayerItemLibraries.VanillaAccessorySlotFirst; PlayerItemLibraries.IsAccessorySlot(player, i); i++ ) {
 				Item accItem = player.armor[i];
 				if( accItem?.active != true || accItem.prefix != this.Type ) {
 					continue;

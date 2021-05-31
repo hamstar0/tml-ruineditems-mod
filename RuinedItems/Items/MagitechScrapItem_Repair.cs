@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using HamstarHelpers.Helpers.Players;
+using ModLibsGeneral.Libraries.Players;
 using RuinedItems.Prefixes;
 
 
@@ -16,7 +16,7 @@ namespace RuinedItems.Items {
 			}
 
 			int scrapItemType = ModContent.ItemType<MagitechScrapItem>();
-			Item scrapItem = PlayerItemFinderHelpers.FindFirstOfPossessedItemFor(
+			Item scrapItem = PlayerItemFinderLibraries.FindFirstOfPossessedItemFor(
 				player,
 				new HashSet<int> { scrapItemType },
 				false
@@ -42,7 +42,7 @@ namespace RuinedItems.Items {
 				return false;
 			}
 
-			if( PlayerItemHelpers.RemoveInventoryItemQuantity( Main.LocalPlayer, scrapItemType, 1 ) <= 0 ) {
+			if( PlayerItemLibraries.RemoveInventoryItemQuantity( Main.LocalPlayer, scrapItemType, 1 ) <= 0 ) {
 				Main.NewText( "Could not use player's scrap items for repairing.", Color.Yellow );
 				return false;
 			}

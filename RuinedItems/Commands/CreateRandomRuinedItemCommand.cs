@@ -2,13 +2,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using HamstarHelpers.Helpers.Items;
+using ModLibsGeneral.Libraries.Items;
 using RuinedItems;
 using RuinedItems.Prefixes;
 using RuinedItems.Items;
 
 
-namespace HamstarHelpers.Commands {
+namespace ModLibsCore.Commands {
 	/// @private
 	public class CreateRandomRuinedItemCommand : ModCommand {
 		/// @private
@@ -32,8 +32,8 @@ namespace HamstarHelpers.Commands {
 			}
 
 			Vector2 pos = caller.Player.position;
-			ItemHelpers.CreateItem( pos, ItemID.HermesBoots, 1, 16, 16, ModContent.PrefixType<RuinedPrefix>() );
-			ItemHelpers.CreateItem( pos, ModContent.ItemType<MagitechScrapItem>(), 1, 16, 16 );
+			ItemLibraries.CreateItem( pos, ItemID.HermesBoots, 1, 16, 16, ModContent.PrefixType<RuinedPrefix>() );
+			ItemLibraries.CreateItem( pos, ModContent.ItemType<MagitechScrapItem>(), 1, 16, 16 );
 		}
 	}
 }
