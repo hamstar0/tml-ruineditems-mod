@@ -13,9 +13,9 @@ namespace RuinedItems {
 		//
 
 		[Range( 0f, 10f )]
-		[DefaultValue( 2f /3f )]
+		[DefaultValue( 1f /2f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float RuinedDamageScale { get; set; } = 2f / 3f;
+		public float RuinedDamageScale { get; set; } = 1f / 2f;
 
 		[Range( 0f, 10f )]
 		[DefaultValue( 2f / 3f )]
