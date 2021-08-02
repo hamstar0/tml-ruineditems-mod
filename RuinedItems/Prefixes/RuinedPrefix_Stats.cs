@@ -63,7 +63,11 @@ namespace RuinedItems.Prefixes {
 			int latestPrefix = item.prefix;
 
 			item.SetDefaults( item.type );
+
+			int resetRarity = item.rare;
+
 			item.Prefix( latestPrefix );
+			item.rare = resetRarity;
 		}
 
 

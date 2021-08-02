@@ -15,6 +15,9 @@ namespace RuinedItems.Prefixes {
 			if( !item.accessory && !item.melee && !item.ranged && !item.magic && !item.summon ) {
 				return false;
 			}
+			if( item.rare == 0 || item.rare == -1 /*|| item.rare == 1*/ ) {
+				return false;
+			}
 
 			var config = RuinedItemsConfig.Instance;
 			string uid = ItemID.GetUniqueKey( item.type );
@@ -69,7 +72,7 @@ namespace RuinedItems.Prefixes {
 		internal void UpdateRuinedAccessoriesForPlayer( Player player ) {
 			for( int i = PlayerItemLibraries.VanillaAccessorySlotFirst; PlayerItemLibraries.IsAccessorySlot(player, i); i++ ) {
 				Item accItem = player.armor[i];
-				if( accItem?.active != true || accItem.prefix != this.Type ) {
+				if( accItem?.active != true || accItem.prefix != ModContent.PrefixType<RuinedPrefix>() ) {
 					continue;
 				}
 

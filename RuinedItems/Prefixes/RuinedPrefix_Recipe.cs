@@ -56,7 +56,7 @@ namespace RuinedItems.Prefixes {
 					|| recipe.usePressurePlate( ingItem.type, reqItem.type )
 					|| recipe.AcceptedByItemGroups( ingItem.type, reqItem.type );
 
-				if( isIngMatch && ingItem.prefix == this.Type ) {
+				if( isIngMatch && ingItem.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 					return true;
 				}
 			}
