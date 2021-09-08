@@ -12,8 +12,12 @@ namespace RuinedItems.Prefixes {
 			float meleeAdd = config.Get<float>( nameof( config.RuinedAccessoryMeleeSpeedAdd ) );
 			//int critAdd = config.Get<int>( nameof(config.RuinedCritAdd) );
 
-			player.moveSpeed *= moveMul;
-			player.meleeSpeed += meleeAdd;
+			if( moveMul != 1f ) {
+				player.moveSpeed *= moveMul;
+			}
+			if( meleeAdd != 0f ) {
+				player.meleeSpeed += meleeAdd;
+			}
 			//player.meleeCrit += critAdd;
 			//player.rangedCrit += critAdd;
 			//player.magicCrit += critAdd;

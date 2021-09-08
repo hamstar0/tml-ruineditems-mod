@@ -78,9 +78,15 @@ namespace RuinedItems {
 			int meleeSpeedPerc = (int)(meleeSpeedAdd * 100f);
 
 			//addTip( critAdd+"% crit chance" );
-			addTip( moveSpeedPerc+"% movement speed", moveSpeedPerc < 0 );
-			addTip( meleeSpeedPerc+"% melee speed", meleeSpeedPerc < 0 );
-			addTip( defAdd+" defense", defAdd < 0 );
+			if( moveSpeedMul != 1f ) {
+				addTip( moveSpeedPerc + "% movement speed", moveSpeedMul < 1f );
+			}
+			if( meleeSpeedAdd != 0f ) {
+				addTip( meleeSpeedPerc + "% melee speed", meleeSpeedAdd < 0f );
+			}
+			if( defAdd != 0 ) {
+				addTip( defAdd + " defense", defAdd < 0 );
+			}
 		}
 	}
 }

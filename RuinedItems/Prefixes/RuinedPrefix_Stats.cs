@@ -27,7 +27,7 @@ namespace RuinedItems.Prefixes {
 				item.shootSpeed *= (float)projSpeedMul;
 				item.mana = (int)Math.Round( (double)item.mana * manaUseMul );
 			} else {
-				item.defense = config.Get<int>( nameof( config.RuinedAccessoryDefenseAdd ) );
+				item.defense += config.Get<int>( nameof( config.RuinedAccessoryDefenseAdd ) );
 			}
 
 			item.crit += critAdd;
