@@ -51,9 +51,9 @@ namespace RuinedItems {
 		public float RuinedAccessoryMoveSpeedScale { get; set; } = 4f / 5f;
 
 		[Range( -1f, 1f )]
-		[DefaultValue( -0.2f )]
+		[DefaultValue(0f)] //-0.2f
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float RuinedAccessoryMeleeSpeedAdd { get; set; } = -0.2f;
+		public float RuinedAccessoryMeleeSpeedAdd { get; set; } = 0f;
 
 		[Range( -100, 100 )]
 		[DefaultValue( -5 )]
