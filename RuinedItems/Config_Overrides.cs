@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Terraria.ModLoader.Config;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.DotNET.Reflection;
-
+using ModLibsCore.Libraries.Debug;
 
 namespace RuinedItems {
 	public partial class RuinedItemsConfig : ModConfig {
@@ -37,6 +37,11 @@ namespace RuinedItems {
 			if( !ReflectionLibraries.Get( this, propName, out T _ ) ) {
 				throw new ModLibsException( "Invalid property " + propName + " of type " + typeof( T ).Name );
 			}
+
+			if( this.DebugMode ) {
+				LogLibraries.LogContext( "Overridding setting "+propName+" with "+value );
+			}
+
 			this.Overrides[propName] = value;
 		}
 	}

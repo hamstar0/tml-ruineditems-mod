@@ -1,6 +1,6 @@
 displayName = Ruined Items
 author = hamstar
-version = 2.11.1.1
+version = 2.11.1.2
 modReferences = ModLibsCore@1.2.0, ModLibsGeneral@1.2.0, ModLibsNet@1.0.0
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
 homepage = https://forums.terraria.org/index.php?threads/ruined-items.102433/
