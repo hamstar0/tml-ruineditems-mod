@@ -58,7 +58,12 @@ namespace RuinedItems.Items {
 				Main.NewText( "Repair success!", Color.Lime );
 			} else {
 				CombatText.NewText( Main.LocalPlayer.getRect(), Color.DimGray, "Repair failed!", true );
-				Main.NewText( "Repair failed! Item can now only be repaired via. reforging.", Color.OrangeRed );
+
+				if( config.Get<bool>( nameof(config.MagitechScrapAttemptsRepairOnlyOncePerItem) ) ) {
+					Main.NewText( "Repair attempt failed! Item can now only be repaired via. reforging.", Color.OrangeRed );
+				} else {
+					Main.NewText( "Repair attempt failed!", Color.OrangeRed );
+				}
 			}
 
 			myitem.IsScrapUsedUpon = true;
