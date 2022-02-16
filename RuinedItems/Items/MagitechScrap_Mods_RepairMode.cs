@@ -8,22 +8,22 @@ using ModLibsUtilityContent.Items;
 
 
 namespace RuinedItems.Items {
-	public partial class MyMagitechScrapItem : ILoadable {
+	public partial class MagitechScrapItem_Mods : ILoadable {
 		internal static void UpdateRepairInteractionsIf( Player player ) {
-			if( !MyMagitechScrapItem.PickerActive ) {
+			if( !MagitechScrapItem_Mods.PickerActive ) {
 				return;
 			}
 
 			if( !Main.playerInventory ) {
-				MyMagitechScrapItem.PickerActive = false;
+				MagitechScrapItem_Mods.PickerActive = false;
 
 				return;
 			}
 
 			if( Main.mouseItem?.IsAir == false ) {
-				MyMagitechScrapItem.PickerActive = false;
+				MagitechScrapItem_Mods.PickerActive = false;
 
-				if( MyMagitechScrapItem.ApplyRepairIf( player, Main.mouseItem ) ) {
+				if( MagitechScrapItem_Mods.ApplyRepairIf( player, Main.mouseItem ) ) {
 					//Main.mouseItem = new Item();
 				}
 			}
@@ -33,7 +33,7 @@ namespace RuinedItems.Items {
 		////////////////
 
 		public static void DrawPickerMode() {
-			if( !MyMagitechScrapItem.PickerActive ) {
+			if( !MagitechScrapItem_Mods.PickerActive ) {
 				return;
 			}
 

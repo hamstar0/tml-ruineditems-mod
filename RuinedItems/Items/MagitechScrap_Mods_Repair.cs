@@ -11,7 +11,7 @@ using RuinedItems.Prefixes;
 
 
 namespace RuinedItems.Items {
-	public partial class MyMagitechScrapItem : ILoadable {
+	public partial class MagitechScrapItem_Mods : ILoadable {
 		public static bool ApplyRepairIf( Player player, Item item ) {
 			if( item?.active != true || item.stack == 0 ) {
 				return false;

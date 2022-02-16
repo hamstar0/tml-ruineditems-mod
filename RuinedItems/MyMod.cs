@@ -56,7 +56,7 @@ namespace RuinedItems {
 		////////////////
 
 		public override void PostDrawInterface( SpriteBatch spriteBatch ) {
-			MyMagitechScrapItem.DrawPickerMode();
+			MagitechScrapItem_Mods.DrawPickerMode();
 		}
 
 

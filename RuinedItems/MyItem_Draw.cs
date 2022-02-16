@@ -19,7 +19,7 @@ namespace RuinedItems {
 
 					bool isHovering = item == RuinedItemsMod.Instance.InventoryMouseHoverItem;
 
-					if( MyMagitechScrapItem.PickerActive && isHovering ) {
+					if( MagitechScrapItem_Mods.PickerActive && isHovering ) {
 						if( isHovering ) {
 							return Color.Lime;
 						}

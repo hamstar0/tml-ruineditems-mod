@@ -9,7 +9,7 @@ using ModLibsUtilityContent.Items;
 
 
 namespace RuinedItems.Items {
-	public partial class MyMagitechScrapItem : ILoadable {
+	public partial class MagitechScrapItem_Mods : ILoadable {
 		public static bool PickerActive { get; internal set; } = false;
 
 
@@ -56,7 +56,7 @@ namespace RuinedItems.Items {
 
 		private bool CanRightClick( MagitechScrapItem self ) {
 			Timers.SetTimer( "RuinedItemsScrapPickerMode", 2, true, () => {
-				MyMagitechScrapItem.PickerActive = !MyMagitechScrapItem.PickerActive;
+				MagitechScrapItem_Mods.PickerActive = !MagitechScrapItem_Mods.PickerActive;
 				return false;
 			} );
 
