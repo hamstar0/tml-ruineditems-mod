@@ -24,6 +24,8 @@ namespace RuinedItems.Items {
 			var myitem = ModContent.GetInstance<MagitechScrapItem>();
 
 			myitem.SetStaticDefaults_Hook = this.SetStaticDefaults;
+			myitem.ModifyTooltips_Hook = this.ModifyTooltips;
+			myitem.CanRightClick_Hook = this.CanRightClick;
 		}
 
 		////////////////
@@ -33,18 +35,6 @@ namespace RuinedItems.Items {
 				+"\nRight-click to begin item picking, left-click on an item to repair it"
 				+"\nMay only repair ruined items"
 			);
-		}
-
-		private void SetDefaults( MagitechScrapItem self ) {
-			var config = RuinedItemsConfig.Instance;
-
-			self.item.width = 12;
-			self.item.height = 12;
-			self.item.maxStack = 1;
-			self.item.consumable = true;
-			self.item.value = config.Get<int>( nameof(config.MagitechScrapPrice) );	//Item.buyPrice( 0, 3, 0, 0 );
-			//self.item.UseSound = SoundID.Item108;
-			self.item.rare = ItemRarityID.Orange;
 		}
 
 
