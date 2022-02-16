@@ -3,25 +3,27 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using ModLibsCore.Classes.Loadable;
+using ModLibsUtilityContent.Items;
 
 
 namespace RuinedItems.Items {
-	public partial class MagitechScrapItem : ModItem {
+	public partial class MyMagitechScrapItem : ILoadable {
 		internal static void UpdateRepairInteractionsIf( Player player ) {
-			if( !MagitechScrapItem.PickerActive ) {
+			if( !MyMagitechScrapItem.PickerActive ) {
 				return;
 			}
 
 			if( !Main.playerInventory ) {
-				MagitechScrapItem.PickerActive = false;
+				MyMagitechScrapItem.PickerActive = false;
 
 				return;
 			}
 
 			if( Main.mouseItem?.IsAir == false ) {
-				MagitechScrapItem.PickerActive = false;
+				MyMagitechScrapItem.PickerActive = false;
 
-				if( MagitechScrapItem.ApplyRepairIf( player, Main.mouseItem ) ) {
+				if( MyMagitechScrapItem.ApplyRepairIf( player, Main.mouseItem ) ) {
 					//Main.mouseItem = new Item();
 				}
 			}
@@ -31,7 +33,7 @@ namespace RuinedItems.Items {
 		////////////////
 
 		public static void DrawPickerMode() {
-			if( !MagitechScrapItem.PickerActive ) {
+			if( !MyMagitechScrapItem.PickerActive ) {
 				return;
 			}
 

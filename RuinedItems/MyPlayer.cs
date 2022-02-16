@@ -64,14 +64,14 @@ namespace RuinedItems {
 		public override void PostUpdate() {
 			if( this.player.whoAmI != Main.myPlayer ) { return; }
 
-			MagitechScrapItem.UpdateRepairInteractionsIf( this.player );
+			MyMagitechScrapItem.UpdateRepairInteractionsIf( this.player );
 		}
 
 		public override void UpdateAutopause() {
 			if( !Main.gamePaused ) { return; }
 			if( this.player.whoAmI != Main.myPlayer ) { return; }
 
-			MagitechScrapItem.UpdateRepairInteractionsIf( this.player );
+			MyMagitechScrapItem.UpdateRepairInteractionsIf( this.player );
 		}
 	}
 }

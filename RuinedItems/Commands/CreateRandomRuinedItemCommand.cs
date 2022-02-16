@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ModLibsGeneral.Libraries.Items;
+using ModLibsUtilityContent.Items;
 using RuinedItems;
 using RuinedItems.Prefixes;
-using RuinedItems.Items;
 
 
 namespace ModLibsCore.Commands {

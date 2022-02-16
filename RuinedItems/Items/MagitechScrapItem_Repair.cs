@@ -4,12 +4,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ModLibsCore.Classes.Loadable;
 using ModLibsGeneral.Libraries.Players;
+using ModLibsUtilityContent.Items;
 using RuinedItems.Prefixes;
 
 
 namespace RuinedItems.Items {
-	public partial class MagitechScrapItem : ModItem {
+	public partial class MyMagitechScrapItem : ILoadable {
 		public static bool ApplyRepairIf( Player player, Item item ) {
 			if( item?.active != true || item.stack == 0 ) {
 				return false;

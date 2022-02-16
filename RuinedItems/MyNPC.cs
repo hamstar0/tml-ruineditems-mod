@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 using ModLibsCore.Libraries.Debug;
-using RuinedItems.Items;
+using ModLibsUtilityContent.Items;
 
 
 namespace RuinedItems {
