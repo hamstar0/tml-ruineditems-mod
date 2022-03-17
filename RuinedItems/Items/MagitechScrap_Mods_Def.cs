@@ -16,29 +16,27 @@ namespace RuinedItems.Items {
 
 		////////////////
 
-		void ILoadable.OnModsLoad() { }
-
-		void ILoadable.OnPostModsLoad() { }
-
-		void ILoadable.OnModsUnload() {
+		void ILoadable.OnModsLoad() {
 			var myitem = ModContent.GetInstance<MagitechScrapItem>();
 
-			myitem.SetStaticDefaults_Hook = this.SetStaticDefaults;
 			myitem.ModifyTooltips_Hook = this.ModifyTooltips;
 			myitem.CanRightClick_Hook = this.CanRightClick;
 		}
 
-		////////////////
+		void ILoadable.OnPostModsLoad() {
+			var myitem = ModContent.GetInstance<MagitechScrapItem>();
 
-		private void SetStaticDefaults( MagitechScrapItem self ) {
-			self.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
-				+"\nRight-click to begin item picking, left-click on an item to repair it"
-				+"\nMay only repair ruined items"
+			myitem.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
+				+ "\nRight-click to begin item picking, left-click on an item to repair it"
+				+ "\nMay only repair ruined items"
 			);
 		}
 
+		void ILoadable.OnModsUnload() {
+		}
 
-		////
+
+		////////////////
 
 		private void ModifyTooltips( MagitechScrapItem self, List<TooltipLine> tooltips ) {
 			var config = RuinedItemsConfig.Instance;
