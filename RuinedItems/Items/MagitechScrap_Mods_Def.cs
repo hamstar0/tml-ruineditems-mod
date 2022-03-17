@@ -24,11 +24,6 @@ namespace RuinedItems.Items {
 
 			myitem.ModifyTooltips_Hook = this.ModifyTooltips;
 			myitem.CanRightClick_Hook = this.CanRightClick;
-
-			myitem.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
-				+ "\nRight-click to begin item picking, left-click on an item to repair it"
-				+ "\nMay only repair ruined items"
-			);
 		}
 
 		void ILoadable.OnModsUnload() {
@@ -43,16 +38,12 @@ namespace RuinedItems.Items {
 
 			//
 
-			tooltips.Clear();
-
-			//
-
 			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap1",
 				"Assorted machine parts with assorted enchantments"
 			) );
 
 			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap2",
-				"Right-click to begin item picking, left-click on an item to repair it"
+				"Right-click scrap to begin picker, left-click on an item to repair it"
 			) );
 
 			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap3",
