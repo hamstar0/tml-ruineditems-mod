@@ -41,10 +41,36 @@ namespace RuinedItems.Items {
 			var config = RuinedItemsConfig.Instance;
 			float repairPerc = config.Get<float>( nameof(config.MagitechScrapRepairChance) );
 
+			//
+
+			tooltips.Clear();
+
+			//
+
+			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap1",
+				"Assorted machine parts with assorted enchantments"
+			) );
+
+			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap2",
+				"Right-click to begin item picking, left-click on an item to repair it"
+			) );
+
+			tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap3",
+				"May only repair ruined items"
+			) );
+
+			//
+
 			if( repairPerc < 1f ) {
 				string repairPercStr = ((int)(repairPerc * 100f)).ToString();
-				tooltips.Add( new TooltipLine(self.mod, "RuinedItemsMagitechScrap1", "Has only a "+repairPercStr+"% chance of success") );
-				tooltips.Add( new TooltipLine(self.mod, "RuinedItemsMagitechScrap2", "Only one repair attempt allowed per item") );
+
+				tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap4",
+					"Has only a "+repairPercStr+"% chance of success"
+				) );
+
+				tooltips.Add( new TooltipLine( self.mod, "RuinedItemsMagitechScrap5",
+					"Only one repair attempt allowed per item"
+				) );
 			}
 		}
 
