@@ -17,14 +17,13 @@ namespace RuinedItems.Items {
 		////////////////
 
 		void ILoadable.OnModsLoad() {
-			var myitem = ModContent.GetInstance<MagitechScrapItem>();
-
-			myitem.ModifyTooltips_Hook = this.ModifyTooltips;
-			myitem.CanRightClick_Hook = this.CanRightClick;
 		}
 
 		void ILoadable.OnPostModsLoad() {
 			var myitem = ModContent.GetInstance<MagitechScrapItem>();
+
+			myitem.ModifyTooltips_Hook = this.ModifyTooltips;
+			myitem.CanRightClick_Hook = this.CanRightClick;
 
 			myitem.Tooltip.SetDefault( "Assorted machine parts with assorted enchantments"
 				+ "\nRight-click to begin item picking, left-click on an item to repair it"
