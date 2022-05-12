@@ -21,7 +21,7 @@ namespace RuinedItems {
 
 
 		public override void PostReforge( Item item ) {
-			if( RuinedPrefix.IsItemRuinable(item) ) {
+			if( RuinedPrefix.IsItemRuinable(item, out _) ) {
 				var myitem = item.GetGlobalItem<RuinedItemsItem>();
 
 				if( this.RuinReforgeIf(item, RuinedItemsItem.IsCurrentPreReforgeItemRuined) ) {

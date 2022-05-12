@@ -70,7 +70,10 @@ namespace RuinedItems {
 
 			foreach( int itemWho in itemWhos ) {
 				Item item = Main.item[itemWho];
-				if( item?.active != true || !RuinedPrefix.IsItemRuinable(item) ) {
+				if( item?.active != true || item.IsAir ) {
+					continue;
+				}
+				if( !RuinedPrefix.IsItemRuinable(item, out _) ) {
 					continue;
 				}
 

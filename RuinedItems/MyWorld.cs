@@ -19,7 +19,7 @@ namespace RuinedItems {
 
 				for( int j=0; j<items.Length; j++ ) {
 					Item item = items[j];
-					if( item?.active != true ) {
+					if( item?.active != true || item.IsAir ) {
 						continue;
 					}
 
@@ -27,9 +27,11 @@ namespace RuinedItems {
 						continue;
 					}
 
-					if( RuinedPrefix.IsItemRuinable(item) ) {
-						item.Prefix( ruinedPrefix );
+					if( !RuinedPrefix.IsItemRuinable(item, out _) ) {
+						continue;
 					}
+
+					item.Prefix( ruinedPrefix );
 				}
 			}
 		}

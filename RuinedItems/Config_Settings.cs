@@ -49,9 +49,9 @@ namespace RuinedItems {
 		public int MagitechScrapPrice { get; set; } = 5000;
 
 		[Range( 0f, 1f )]
-		[DefaultValue( 1f / 3f )]
+		[DefaultValue( 1f / 2f )]
 		[CustomModConfigItem( typeof( MyFloatInputElement ) )]
-		public float MagitechScrapRepairChance { get; set; } = 1f / 3f;
+		public float MagitechScrapRepairChance { get; set; } = 1f / 2f;
 
 		public NPCDefinition MagitechScrapSoldByWhom { get; set; } = new NPCDefinition( NPCID.GoblinTinkerer );
 

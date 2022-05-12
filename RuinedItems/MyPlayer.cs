@@ -9,7 +9,7 @@ using RuinedItems.Items;
 namespace RuinedItems {
 	partial class RuinedItemsPlayer : ModPlayer {
 		public override void PostBuyItem( NPC vendor, Item[] shopInventory, Item item ) {
-			if( !RuinedPrefix.IsItemRuinable(item) ) {
+			if( !RuinedPrefix.IsItemRuinable(item, out _) ) {
 				return;
 			}
 

@@ -13,7 +13,7 @@ using RuinedItems.Prefixes;
 namespace RuinedItems.Items {
 	public partial class MagitechScrapItem_Mods : ILoadable {
 		public static bool ApplyRepairIf( Player player, Item item ) {
-			if( item?.active != true || item.stack == 0 ) {
+			if( item?.active != true || item.IsAir ) {
 				return false;
 			}
 
@@ -49,10 +49,12 @@ namespace RuinedItems.Items {
 				return false;
 			}
 
+			//
+
 			if( Main.rand.NextFloat() < config.Get<float>( nameof(config.MagitechScrapRepairChance) ) ) {
 				float rollChance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
 
-				config.SetOverride( nameof(config.GeneralRuinRollChance), 0f );
+				config.SetOverride( nameof(config.GeneralRuinRollChance), 0f );	// hax
 				item.Prefix( -1 );
 				config.SetOverride( nameof(config.GeneralRuinRollChance), rollChance );
 
@@ -67,6 +69,8 @@ namespace RuinedItems.Items {
 					Main.NewText( "Repair attempt failed!", Color.OrangeRed );
 				}
 			}
+
+			//
 
 			myitem.IsScrapUsedUpon = true;
 

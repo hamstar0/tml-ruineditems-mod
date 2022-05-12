@@ -7,15 +7,35 @@ using ModLibsGeneral.Libraries.Players;
 
 
 namespace RuinedItems.Prefixes {
+	public enum RuinFailCode {
+		None = 0,
+		InvalidItem = 1,
+		Stackable = 2,
+		CannotPrefix = 4,
+		UnacceptableRarity = 8,
+		Blacklisted = 16
+	}
+
+
+
+
 	public partial class RuinedPrefix : ModPrefix {
-		public static bool IsItemRuinable( Item item ) {
-			if( item?.active != true || item.maxStack != 1 ) {
+		public static bool IsItemRuinable( Item item, out RuinFailCode resultCode ) {
+			if( !item.active || item.IsAir ) {
+				resultCode = RuinFailCode.InvalidItem;
+				return false;
+			}
+			if( item.maxStack != 1 ) {
+				resultCode = RuinFailCode.Stackable;
 				return false;
 			}
 			if( !item.accessory && !item.melee && !item.ranged && !item.magic && !item.summon ) {
+				resultCode = RuinFailCode.CannotPrefix;
 				return false;
 			}
-			if( item.rare == 0 || item.rare == -1 /*|| item.rare == 1*/ ) {
+
+			if( item.rare == 0 || item.rare == -1  ) {	//|| item.rare == 1
+				resultCode = RuinFailCode.UnacceptableRarity;
 				return false;
 			}
 
@@ -24,6 +44,7 @@ namespace RuinedItems.Prefixes {
 			var blacklistedItemUids = config.Get<HashSet<string>>( nameof(config.CannotRuinItems) );
 
 			if( blacklistedItemUids.Contains(uid) ) {
+				resultCode = RuinFailCode.Blacklisted;
 				return false;
 			}
 
@@ -31,7 +52,8 @@ namespace RuinedItems.Prefixes {
 				var config = RuinedItemsConfig.Instance;
 				return config.Get<float>( nameof(config.GeneralRuinRollChance) ) > 0f;
 			}*/
-			
+
+			resultCode = 0;
 			return true;
 		}
 
@@ -56,14 +78,15 @@ namespace RuinedItems.Prefixes {
 
 		////////////////
 		
-		public override float RollChance( Item item ) {
+		/*public override float RollChance( Item item ) {
 			var config = RuinedItemsConfig.Instance;
-			return config.Get<float>( nameof(config.GeneralRuinRollChance) );
-		}
+			float chance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
+			return chance;
+		}*/		// <-Handled more consistently in GlobalItem.ChoosePrefix?
 
 
 		public override bool CanRoll( Item item ) {
-			return RuinedPrefix.IsItemRuinable( item );
+			return RuinedPrefix.IsItemRuinable( item, out _ );
 		}
 
 
@@ -72,7 +95,10 @@ namespace RuinedItems.Prefixes {
 		internal void UpdateRuinedAccessoriesForPlayer( Player player ) {
 			for( int i = PlayerItemLibraries.VanillaAccessorySlotFirst; PlayerItemLibraries.IsAccessorySlot(player, i); i++ ) {
 				Item accItem = player.armor[i];
-				if( accItem?.active != true || accItem.prefix != ModContent.PrefixType<RuinedPrefix>() ) {
+				if( accItem?.active != true || accItem.IsAir ) {
+					continue;
+				}
+				if( accItem.prefix != ModContent.PrefixType<RuinedPrefix>() ) {
 					continue;
 				}
 

@@ -71,13 +71,13 @@ namespace RuinedItems {
 			callback.Invoke( plr );
 
 			for( int i=0; i<wldItemsSnapshot.Length; i++ ) {
-				if( Main.item[i]?.active == true && wldItemsSnapshot[i] != Main.item[i] ) {
+				if( Main.item[i]?.active == true && !Main.item[i].IsAir && wldItemsSnapshot[i] != Main.item[i] ) {
 					this.ProcessBagItem( plr, Main.item[i] );
 				}
 			}
 
 			for( int i=0; i<plrInvSnapshot.Length; i++ ) {
-				if( plr.inventory[i]?.active == true && plrInvSnapshot[i] != plr.inventory[i] ) {
+				if( plr.inventory[i]?.active == true && !plr.inventory[i].IsAir && plrInvSnapshot[i] != plr.inventory[i] ) {
 					this.ProcessBagItem( plr, plr.inventory[i] );
 				}
 			}
@@ -87,7 +87,7 @@ namespace RuinedItems {
 			Action<ScrapedSentData> listener = ( d )=> {
 				int itemWho = d.Number;
 				Item item = Main.item[ itemWho ];
-				if( item?.active != true ) {
+				if( item?.active != true || item.IsAir ) {
 					return;
 				}
 
@@ -109,7 +109,7 @@ namespace RuinedItems {
 		////////////////
 
 		private void ProcessBagItem( Player plr, Item item ) {
-			if( RuinedPrefix.IsItemRuinable(item) ) {
+			if( RuinedPrefix.IsItemRuinable(item, out _) ) {
 				var config = RuinedItemsConfig.Instance;
 				float ruinChance = config.Get<float>( nameof(config.NPCLootItemRuinPercentChance) );
 

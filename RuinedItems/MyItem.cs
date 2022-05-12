@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Terraria;
+using Terraria.Utilities;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using ModLibsCore.Libraries.Debug;
@@ -59,7 +60,7 @@ namespace RuinedItems {
 		}
 
 		public override bool NeedsSaving( Item item ) {
-			return RuinedPrefix.IsItemRuinable( item );
+			return RuinedPrefix.IsItemRuinable( item, out _ );
 		}
 
 		////
@@ -78,7 +79,21 @@ namespace RuinedItems {
 
 
 		////////////////
-		
+
+		public override int ChoosePrefix( Item item, UnifiedRandom rand ) {
+			var config = RuinedItemsConfig.Instance;
+			float chance = config.Get<float>( nameof(config.GeneralRuinRollChance) );
+
+			int prefix = rand.NextFloat() < chance
+				? ModContent.PrefixType<RuinedPrefix>()
+				: -1;
+
+			return prefix;
+		}
+
+
+		////////////////
+
 		public override void UpdateInventory( Item item, Player player ) {
 			if( item.prefix == ModContent.PrefixType<RuinedPrefix>() ) {
 				this.WasRuinedSinceLastCheck = true;
